@@ -1,0 +1,98 @@
+<h3>Lista de Alunos</h3>
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Rodolpho" id="nome" type="text" class="validate">
+                <label class="active" for="nome">Nome</label>
+            </div>
+            <div class="input-field col s12">
+                <input placeholder="Back End" id="curso" type="text" class="validate">
+                <label class="active" for="curso">Curso</label>
+            </div>
+            <div class="input-field col s12">
+                <input placeholder="aaa000" id="matricula" type="text" class="validate">
+                <label class="active" for="matricula">Matricula</label>
+            </div>
+        </div>
+    </form>
+    <button onclick="salvarDados()" class="btn waves-effect waves-light" name="action">Salvar
+        <i class="material-icons right">send</i>
+    </button>
+    <button onclick="listarDados()" class="btn waves-effect waves-light" name="action">Listar
+        <i class="material-icons right">send</i>
+    </button>
+</div>
+
+<ul id="pessoas" class="collection"></ul>
+
+<script>
+
+
+    function pegaId(id) {
+        
+        $.getJSON(`http://localhost:3000/alunos/${id}`, function (data, status) {
+            console.log(data)
+            console.log(status)
+            $('#nome').val(data.nome)
+            $('#curso').val(data.curso)
+            $('#matricula').val(data.matricula)
+        })
+    }
+
+    function salvarDados() {
+        var dados = $("input")
+
+        dadosSalvar = {
+            nome: dados[0].value,
+            curso: dados[1].value,
+            matricula: dados[2].value,
+        }
+        console.log("dados salavar ", dadosSalvar)
+
+        $.post("http://localhost:3000/alunos", dadosSalvar, function (result) {
+            console.log('os dados foram salvos', result)
+        })
+
+        listarDados()
+
+    }
+
+    function listarDados() {
+        $.getJSON('http://localhost:3000/alunos', function (data, status) {
+            console.log(data)
+            let pessoas = []
+
+            for (let pessoa of data) {
+                pessoas.push(`
+            <li class="collection-item avatar">
+            <img src="../assets/images/perfil01.jpg" alt="" class="circle">
+            <span class="title">${pessoa.nome || 'Não tem'}</span>
+            <p>${pessoa.curso || 'Não tem'} <br>
+            ${pessoa.matricula || 'Não tem'}
+            </p>
+            <a href="#!" class="secondary-content"><i onclick="pegaId(${pessoa.id})" class="material-icons">remove_red_eye</i></a>
+            </li>
+            `)
+            }
+
+            $('#pessoas').html(pessoas)
+
+        })
+
+    }
+
+
+
+    //$("#enviarForm").click(function () {
+    //    $.post("http://localhost:3000/alunos",
+    //        {
+    //            "nome": $("#nome").val(),
+    //            "idade": $("#idade").val(),
+    //            "curso": $("#curso").val(),
+    //            "matricula": $("#matricula").val()
+    //        });
+    //});
+
+</script>

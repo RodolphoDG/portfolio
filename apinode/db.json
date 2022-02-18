@@ -1,0 +1,64 @@
+{
+  "alunos": [
+    {
+      "nome": "Joao",
+      "curso": "Web",
+      "matricula": "abc122",
+      "id": 1
+    },
+    {
+      "nome": "Maria",
+      "curso": "Web",
+      "matricula": "abc321",
+      "id": 2
+    },
+    {
+      "nome": "Jose",
+      "curso": "Web",
+      "matricula": "def322",
+      "id": 3
+    },
+    {
+      "nome": "Joaquina",
+      "curso": "Web",
+      "matricula": "def325",
+      "id": 4
+    },
+    {
+      "nome": "Felipina",
+      "curso": "Web",
+      "matricula": "def925",
+      "id": 5
+    },
+    {
+      "nome": "Vera",
+      "curso": "Web",
+      "matricula": "def955",
+      "id": 6
+    },
+    {
+      "nome": "Cirilo",
+      "curso": "Back",
+      "matricula": "rdf879",
+      "id": 7
+    },
+    {
+      "nome": "",
+      "curso": "",
+      "matricula": "",
+      "id": 8
+    },
+    {
+      "nome": "Jaquina",
+      "curso": "Back",
+      "matricula": "wse847",
+      "id": 9
+    },
+    {
+      "nome": "Xica",
+      "curso": "Back",
+      "matricula": "ert321",
+      "id": 10
+    }
+  ]
+}
